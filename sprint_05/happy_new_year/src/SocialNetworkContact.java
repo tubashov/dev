@@ -1,5 +1,5 @@
 // унаследуйте класс от базового класса, описывающего контакт Contact
-class SocialNetworkContact extends ContactBook {
+class SocialNetworkContact extends Contact {
     private final String socialNetwork;
     private final String username;
 
@@ -19,13 +19,10 @@ class SocialNetworkContact extends ContactBook {
 
 // метод sendMessage переопределяет метод базового класса
 
-
     public void sendMessage() {
         System.out.println("Отправим забавный стикер одногруппнику в соцсети " + socialNetwork + ", имя пользователя " + username);
     }
-
-
-
+    @Override
     public void print() {
         System.out.println("Социальная сеть: " + socialNetwork);
         System.out.println("Имя пользователя: " + username);

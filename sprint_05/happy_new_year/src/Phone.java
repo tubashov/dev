@@ -1,5 +1,5 @@
 // унаследуйте класс от базового класса, описывающего контакт Contact
-class Phone extends ContactBook {
+class Phone extends Contact {
     private final String phoneNumber;
 
     public Phone(String name, String phoneNumber) {
@@ -17,7 +17,7 @@ class Phone extends ContactBook {
         System.out.println("Звоним другу по номеру " + phoneNumber + " и зовём на кофе.");
     }
 
-
+    @Override
     public void print() {
         System.out.println("Номер телефона: " + getPhoneNumber());
     }
