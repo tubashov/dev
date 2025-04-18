@@ -31,7 +31,7 @@ public class Practicum {
 
     ...
 
-    void print(...values) {
+    void print(...values) { /// печть объектов разных типов
         for (...){
             value.printSmart();
         }
@@ -42,7 +42,7 @@ interface SmartPrintable {
     void printSmart();
 }
 
-class AnswerHolder ...{
+class AnswerHolder extends SmartPrintable {
         ...question;
 intValue.answer;
 
@@ -61,7 +61,7 @@ public void printSmart() {
 }
 }
 
-class HardQuestion ...{
+class HardQuestion extends SmartPrintable {
         ...questionText;
 
 public HardQuestion(...) {
