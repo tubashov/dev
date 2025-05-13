@@ -1,15 +1,4 @@
 import java.util.NoSuchElementException;
-/*
-Метод getLast() является полной копией метода getFirst() с той лишь разницей, что здесь работа идёт с хвостом tail, а не
-с головой head списка.
-Двусвязные списки можно легко отобразить на бумаге в виде связанных блоков. Нарисуйте, как меняются ссылки внутри
-двусвязного списка при выполнении метода addFirst(T). Это поможет вам реализовать addLast(T).
-Реализация метода addLast(T) состоит из нескольких шагов. Сначала запоминается ссылка на хвост и создаётся новый
-элемент. Этот новый элемент не будет иметь следующего, но его предыдущим будет текущий хвост. Таким образом новый
-элемент можно создать при помощи вызова конструктора new Node<>(tail, element, null);.
-После создания элемента, необходимо проверить, существовал ли раньше хвост списка. Если да — предыдущий хвост начинает
-ссылаться на новый элемент oldTail.next = newNode. Иначе, создаётся не только хвост, но и голова списка head = newNode.
- */
 
 public class HandMadeLinkedList<T> {
 
@@ -58,22 +47,11 @@ public class HandMadeLinkedList<T> {
 
     public void addLast(T element) {
         // Реализуйте метод
-        final Node<T> oldTail = tail;
-        final Node<T> newNode = new Node<>(null, element, oldTail);
-        tail = newNode;
-        if (oldTail == null)
-            head = newNode;
-        else
-            oldTail.prev = newNode;
-        size++;
+
     }
 
     public T getLast() {
         // Реализуйте метод
-        final Node<T> curTail = tail;
-        if (curTail == null)
-            throw new NoSuchElementException();
-        return tail.data;
     }
 
     public int size() {
