@@ -5,12 +5,12 @@ public class Potato implements Comparable<Potato> {
     public final int id;
 
     /**
-     * Масса
+            * Масса
      */
     public final int weight;
 
     /**
-     * Длина
+            * Длина
      */
     public final int length;
 
@@ -18,30 +18,20 @@ public class Potato implements Comparable<Potato> {
      * Ширина
      */
     public final int girth;
-
     public Potato(int id, int weight, int length, int girth) {
         this.id = id;
         this.weight = weight;
         this.length = length;
         this.girth = girth;
     }
-
+    public int calculateAlpha(Potato o) {
+        return (int) (o.weight * 0.5 + o.length * 0.65 + o.girth * 0.8);
+    }
     @Override
     public int compareTo(Potato o) {
         // Сравните картофелины по альфа характеристике
-        if (this.weight != o.weight) {
-            return Integer.compare(this.weight, o.weight);
-        }
-        if (this.length != o.length) {
-            return Integer.compare(this.length, o.length);
-        }
-        if (this.girth != o.girth) {
-            return Integer.compare(this.girth, o.girth);
-        }
-        return 0;
+        return Integer.compare(calculateAlpha(this), calculateAlpha(o));
     }
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -49,7 +39,6 @@ public class Potato implements Comparable<Potato> {
         Potato potato = (Potato) o;
         return id == potato.id;
     }
-
     @Override
     public int hashCode() {
         return Objects.hash(id);

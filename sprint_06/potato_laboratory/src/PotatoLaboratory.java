@@ -5,7 +5,7 @@ import java.util.Objects;
 
 public class PotatoLaboratory {
 
-    public static <Potato> void main(String[] args) {
+    public static void main(String[] args) {
         List<Potato> potatoes = List.of(
                 new Potato(1, 30, 30, 30),
                 new Potato(2, 35, 31, 35),
@@ -21,16 +21,18 @@ public class PotatoLaboratory {
         System.out.println("Картофелины для эксперимента: " + fourUnderExperiment);
     }
     private static List<Potato> findPotatoesForExperiment(List<Potato> potatoes) {
-				/* Вычислите две самые большие и две самые маленькие картофелины, 
+				/* Вычислите две самые большие и две самые маленькие картофелины,
            а затем выведите их в порядке от самых маленьких до самых больших.*/
-        ArrayList<Potato> potatoesForExperiment = new ArrayList<>(potatoes);
+        final ArrayList<Potato> tempList = new ArrayList<>(potatoes);
+        Collections.sort(tempList, Potato::calculateAlpha);
+        final ArrayList<Potato> potatoesForExperiment = new ArrayList<>();
+        potatoesForExperiment.add(Collections.min(tempList));
+        potatoesForExperiment.add(Collections.max(tempList));
+        tempList.remove(Collections.min(tempList));
+        tempList.remove(Collections.max(tempList));
+        potatoesForExperiment.add(Collections.min(tempList));
+        potatoesForExperiment.add(Collections.max(tempList));
         Collections.sort(potatoesForExperiment);
-        Objects minPotato1 = Collections.min(potatoesForExperiment);
-        Objects maxPotato1 = Collections.max(potatoesForExperiment);
-        potatoesForExperiment.remove(0);
-        potatoesForExperiment.remove(potatoesForExperiment.size() - 1);
-        Objects minPotato2 = Collections.min(potatoesForExperiment);
-        Objects maxPotato2 = Collections.max(potatoesForExperiment);
         return potatoesForExperiment;
     }
 }
