@@ -5,7 +5,7 @@ import java.util.Objects;
 
 public class PotatoLaboratory {
 
-    public static void main(String[] args) {
+    public static <Potato> main(String[] args) {
         List<Potato> potatoes = List.of(
                 new Potato(1, 30, 30, 30),
                 new Potato(2, 35, 31, 35),
@@ -24,7 +24,7 @@ public class PotatoLaboratory {
 				/* Вычислите две самые большие и две самые маленькие картофелины,
            а затем выведите их в порядке от самых маленьких до самых больших.*/
         final ArrayList<Potato> tempList = new ArrayList<>(potatoes);
-        Collections.sort(tempList, Potato::calculateAlpha);
+        Collections.sort(tempList);
         final ArrayList<Potato> potatoesForExperiment = new ArrayList<>();
         potatoesForExperiment.add(Collections.min(tempList));
         potatoesForExperiment.add(Collections.max(tempList));
