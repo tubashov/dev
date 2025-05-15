@@ -12,8 +12,7 @@ public class Practicum {
         pizzeria.openPizzeria();
         pizzeria.printStatistics();
     }
-    int countOrders = 0;
-    // Начинаем принимать заказы! 🍕
+        // Начинаем принимать заказы! 🍕
     private void openPizzeria() {
         newOrder("Леонардо");
         newOrder("Донателло");
