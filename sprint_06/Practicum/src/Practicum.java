@@ -1,30 +1,55 @@
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class Practicum {
-    // Пример списка пассажиров (на самом деле их больше)
-    private static List<String> passengerNames = List.of(
-            "Василий Петров",
-            "Анна Ягирская",
-            "Виктория Сотова",
-            "Игорь Серов",
-            "Людмила Ульянова"
-    );
+    // Создадим хеш-таблицу для хранения заказов.
+    // В качестве ключа будет имя клиента.
+    // В качестве значения — количество заказов от этого клиента.
+    private Map<String, Integer> orders = new HashMap<>();
 
     public static void main(String[] args) {
-        Map<String, Integer> seats = assignSeats(passengerNames);
-        System.out.println("Места пассажиров: " + seats);
+        Practicum pizzeria = new Practicum();
+        pizzeria.openPizzeria();
+        pizzeria.printStatistics();
     }
 
-    public static Map<String, Integer> assignSeats(List<String> passengerNames) {
-        // Тут нужно написать код, который будет распределять места в самолёте ✈️
-        Map<String, Integer> seats =new HashMap<>();
-        int numSeat = 1;
-        for(String passenger : passengerNames) {
-            seats.put(passenger,numSeat);
-            numSeat++;
+    // Начинаем принимать заказы! 🍕
+    private void openPizzeria() {
+        newOrder("Леонардо");
+        newOrder("Донателло");
+        newOrder("Рафаэль");
+        newOrder("Леонардо");
+        newOrder("Микеланджело");
+        newOrder("Шреддер");
+        newOrder("Донателло");
+    }
+
+    private void newOrder(String clientName) {
+        // Сохраните новый заказ в хеш-таблицу. При обновлении счётчика заказов
+        // не забудьте учесть заказы, которые уже были сделаны ранее.
+        int countOrders;
+        for(Map.Entry<String, Integer> order : orders.entrySet()) {
+            if (orders.containsKey(clientName)) {
+                countOrders = orders.get(clientName);
+                countOrders++;
+                orders.put(clientName, countOrders);
+            } else {
+                countOrders = 1;
+                orders.put(clientName, countOrders);
+            }
         }
-        return seats;
+    }
+
+    private void printStatistics() {
+        // Выведите собранную статистику в консоль и посчитайте общее количество заказов.
+        //
+        // Формат для вывода данных в консоль:
+        //     Заказов от Микеланджело: 15
+        //     Заказов от Леонардо: 4
+        //     Всего заказов: 19
+
+        for(Map.Entry<String, Integer> order : orders.entrySet()) {
+            System.out.println("Заказаов от " + order.getKey() + ": " + orders.getOrDefault(order.getKey(), 0));
+        }
     }
 }
