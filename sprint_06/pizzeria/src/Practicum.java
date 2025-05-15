@@ -28,14 +28,14 @@ public class Practicum {
         // Сохраните новый заказ в хеш-таблицу. При обновлении счётчика заказов
         // не забудьте учесть заказы, которые уже были сделаны ранее.
         int countOrders;
-            if (orders.containsKey(clientName)) {
-                countOrders = orders.get(clientName);
-                countOrders++;
-                orders.put(clientName, countOrders);
-            } else {
-                countOrders = 1;
-                orders.put(clientName, countOrders);
-            }
+        if (orders.containsKey(clientName)) {
+            countOrders = orders.get(clientName);
+            countOrders++;
+            orders.put(clientName, countOrders);
+        } else {
+            countOrders = 1;
+            orders.put(clientName, countOrders);
+        }
     }
     private void printStatistics() {
         // Выведите собранную статистику в консоль и посчитайте общее количество заказов.
