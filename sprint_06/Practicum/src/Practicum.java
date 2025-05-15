@@ -23,7 +23,6 @@ public class Practicum {
         newOrder("Шреддер");
         newOrder("Донателло");
     }
-
     private void newOrder(String clientName) {
         // Сохраните новый заказ в хеш-таблицу. При обновлении счётчика заказов
         // не забудьте учесть заказы, которые уже были сделаны ранее.
